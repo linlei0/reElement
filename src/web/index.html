@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+   <meta  http-equiv="X-UA-Compatible" content="ie=edge">
+<title>验证码示例</title>
+<style>
+  *{
+    padding:0;
+    margin:0;
+  }
+  html,body{
+    height: 100%;
+  }
+  .yidun_panel{
+    padding-bottom: 3px !important;
+  }
+  #captcha{
+    
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    margin: auto !important;
+    height: 250px;
+  }
+  .yidun .yidun--light{
+    /* margin-top:100px;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    margin: auto !important; */
+  }
+</style>
+</head>
+<body>
+   
+    <div id="captcha" ></div> <!-- 验证码容器元素 -->
+
+    <script src="index.js"></script><!-- 初始化JS -->
+   <script>
+    var width = window.innerWidth;
+    var captchaIns;
+    initNECaptcha({
+      captchaId: '7d06d8a7bc9740ff80edd82b0127b787',
+      element: '#captcha',
+      mode: 'embed',
+      width:  width*.8,
+      onReady:function(instance){
+        
+      },
+      onVerify:function(err, data){
+        if(err){
+          captchaIns.refresh();
+        }else{
+          captchaIns.destroy();
+          var result = JSON.stringify(data);
+          window.postMessage(JSON.stringify(result))
+        }
+      }
+    }, function onload (instance) {
+      captchaIns = instance
+      // 初始化成功后，用户输入对应用户名和密码，以及完成验证后，直接点击登录按钮即可
+    }, function onerror (err) {
+      console.log(err)
+      // 验证码初始化失败处理逻辑，例如：提示用户点击按钮重新初始化
+    })
+   
+    </script>
+</body>
+</html>

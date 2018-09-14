@@ -1,0 +1,30 @@
+const dataList = [{
+    name:"主区",
+    list:[{
+        data1:1,
+        data2:2,
+        data3:3,
+    },{
+        data1:1,
+        data2:2,
+        data3:3,
+    },
+    {
+        data1:1,
+        data2:2,
+        data3:3,  
+    },{
+        data1:1,
+        data2:2,
+        data3:3,
+    }]
+},
+{
+    name:"创新区",
+    list:[{
+        data1:1,
+        data2:2,
+        data3:3,
+    }]
+}
+]
