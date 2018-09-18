@@ -47,12 +47,10 @@ class Login extends Component {
     onMessage = (event) => {
         
         //alert(event.nativeEvent.data);//获取从h5传过来的此参数
-        // console.log(typeof event.nativeEvent.data)
-        // console.log(eval(event.nativeEvent.data),eval(event.nativeEvent.data).validate);
+
         let str1 = eval(event.nativeEvent.data);
-        console.log(str1);
         let str2 = JSON.parse(str1);
-        console.log(str2);
+    
         this.setState({
             modalVisible: false,
            // validate:JSON.parse(event.nativeEvent.data).validate
@@ -60,16 +58,15 @@ class Login extends Component {
             let body = JSON.stringify({
                 "login_field":"753428092@qq.com",
                 "password":'111111',
-                "client":'3', //4 ios 3 android
-               "validate":str2.validate
+                "client":'3' //4 ios 3 android
+              // "validate":str2.validate
             });
-           // console.log(body);
+            console.log(body);
 
             fetch('https://api.ucoins.cc/api/v3/auth/login',{
                 method:'POST',
                 headers:{
-                    //"Content-Type": "text/plain"
-                    "X-Requested-With": "XMLHttpRequest"
+                    "Content-Type": "application/json"
                 },
                 body
     
