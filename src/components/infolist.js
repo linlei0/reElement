@@ -33,17 +33,21 @@ export default class InfoList extends Component {
         return <View key = {i}>
           <Text style={{marginLeft:px2dp(15),
             paddingTop:px2dp(5),
-            paddingBottom:px2dp(5),
+            // paddingBottom:px2dp(5),
            color:colorConfig.botton_color}}>{e.name}</Text>
            <View>
             {e.list&&e.list.length>0&&e.list.map((e,k)=>{
-              return <View key={k} style={{
+              return <TouchableOpacity
+              onPress = {(e)=>{
+                this.props.onPress&&this.props.onPress(e)
+              }}
+              key={k} style={{
                 flexDirection:'row',
                 marginLeft:px2dp(15),
                 marginRight:px2dp(15),
                 borderBottomColor:colorConfig.line_color,
                 borderBottomWidth:1,
-                //paddingTop:px2dp(8),
+                paddingTop:px2dp(8),
                 paddingBottom:px2dp(10)
             }}>
                 <View style={{
@@ -82,7 +86,7 @@ export default class InfoList extends Component {
                     </View>
                    
                 </View>
-            </View>
+            </TouchableOpacity>
             })}
            </View>
         </View>

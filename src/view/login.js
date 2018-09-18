@@ -45,25 +45,64 @@ class Login extends Component {
     }
     //webview中的html页面传过来的的数据在event.nativeEvent.data上
     onMessage = (event) => {
-   
-        alert(event.nativeEvent.data);//获取从h5传过来的此参数
+        
+        //alert(event.nativeEvent.data);//获取从h5传过来的此参数
+        // console.log(typeof event.nativeEvent.data)
+        // console.log(eval(event.nativeEvent.data),eval(event.nativeEvent.data).validate);
+        let str1 = eval(event.nativeEvent.data);
+        console.log(str1);
+        let str2 = JSON.parse(str1);
+        console.log(str2);
         this.setState({
-            modalVisible: false
+            modalVisible: false,
+           // validate:JSON.parse(event.nativeEvent.data).validate
         },()=>{
-            this.props.navigation.navigate('Home',{params:1})
+            let body = JSON.stringify({
+                "login_field":"753428092@qq.com",
+                "password":'111111',
+                "client":'3', //4 ios 3 android
+               "validate":str2.validate
+            });
+            console.log(body);
+            fetch('https://api.ucoins.cc/api/v3/auth/login',{
+                method:'POST',
+                headers:{
+                    //"Content-Type": "text/plain"
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                body
+    
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+            })
+            .catch(error=>{
+                console.log(error);
+            })
+
         })
     }
     //登录
     login(){
+        //753428092@qq.com   111111
         dismissKeyboard();//收起键盘
         if(!this.state.userName){
             this.refs.toast.show('请输入用户名');
             return;
         }
-        this.props.navigation.navigate('Home',{params:1})
-        // this.setState({
-        //     modalVisible:true
-        // })
+        if(!this.state.passWord){
+            this.refs.toast.show('请输入密码');
+            return;
+        }
+        this.setState({  //开启验证
+            modalVisible:true
+        })
+      
+
+
+     //   this.props.navigation.navigate('Home',{params:1})
+        
     }
     //注册
     registe(){

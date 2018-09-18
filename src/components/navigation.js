@@ -72,14 +72,16 @@ export default class Nav extends Component{
             screen:Market,  
             navigationOptions:({navigation}) => ({  
               tabBarLabel:'市场',  
-              tabBarIcon:({focused,tintColor}) => (  
+              tabBarIcon:({focused,tintColor}) => {
+                // console.log(navigation);
+                return(  
                 <TabBarItem  
                   tintColor={tintColor}  
                   focused={focused}  
                   normalImage={require('../Images/Market_n.png')}  
                   selectedImage={require('../Images/Market_y.png')}  
                 />  
-              ) 
+              ) }
             }),  
           }, 
           Deal:{  

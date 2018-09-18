@@ -130,6 +130,9 @@ render() {
             
             <InfoList 
             data = {dataList}
+            onPress = {(e)=>{
+                console.log(e)
+            }}
             />
 
            
@@ -138,7 +141,7 @@ render() {
         </ScrollView>:null}
 
        {this.state.type==1? <ScrollView
-        
+        style={{backgroundColor:"#fff"}}
         ref={o=>this._scrollview1=o}
             showsVerticalScrollIndicator={false}
             onMomentumScrollEnd = {(event)=>{//滑动结束
@@ -158,24 +161,26 @@ render() {
         >
         <InfoList 
         data = {dataList}
+        onPress = {(e)=>{
+            console.log(e)
+        }}
         />
         </ScrollView>:null}
 
 
         {this.state.type==2? <ScrollView
-        
+            style={{backgroundColor:"#fff"}}
             ref={o=>this._scrollview2=o}
                 showsVerticalScrollIndicator={false}
                 onMomentumScrollEnd = {(event)=>{//滑动结束
-                    //console.log(event.nativeEvent.contentOffset.x);//水平滚动距离
-                    // alert(event.nativeEvent.contentOffset.y);//垂直滚动距离 
+                   
                     this.setState({
                         y2:event.nativeEvent.contentOffset.y
                     })
                   }}
     
                   onScrollEndDrag={(event)=>{
-                    // alert(event.nativeEvent.contentOffset.y);//垂直滚动距离 
+                   
                     this.setState({
                         y2:event.nativeEvent.contentOffset.y
                     })
@@ -188,7 +193,7 @@ render() {
                   
 
             {this.state.type==3? <ScrollView
-        
+                style={{backgroundColor:"#fff"}}
                 ref={o=>this._scrollview3=o}
                     showsVerticalScrollIndicator={false}
                     onMomentumScrollEnd = {(event)=>{//滑动结束
