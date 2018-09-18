@@ -63,7 +63,8 @@ class Login extends Component {
                 "client":'3', //4 ios 3 android
                "validate":str2.validate
             });
-            console.log(body);
+           // console.log(body);
+
             fetch('https://api.ucoins.cc/api/v3/auth/login',{
                 method:'POST',
                 headers:{
