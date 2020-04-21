@@ -5,12 +5,13 @@ import {
     StyleSheet,
  
 } from 'react-native';
-import { createStore, applyMiddleware, compose  } from 'redux';  
+// import { createStore, applyMiddleware, compose  } from 'redux';  
 import { Provider } from 'react-redux';  
-import thunk from 'redux-thunk';  
-import configureStore from './src/store/configureStore';
+
+import store from './src/store/index'
+
 import Index from './App';
-const store = configureStore();
+
 export default class App extends Component {
   
   constructor(props) {
@@ -28,9 +29,10 @@ export default class App extends Component {
  
   render() {
     return (
-        <Provider store={store}>
+      <Provider store={store}>
         <Index />
       </Provider>
+      
     );
   }
 }

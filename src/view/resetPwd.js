@@ -13,7 +13,6 @@ import {
 import dismissKeyboard from 'dismissKeyboard';
 import Botton from '../components/botton';
 import Input from '../components/textInput';
-import {colorConfig} from '../config/colorConfig';
 const {width,height} = Dimensions.get('window');
 import{ px2dp} from '../lib/px2dp';
 import Header from '../components/header';

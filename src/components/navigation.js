@@ -35,6 +35,8 @@ import Login from '../view/login';
 import Registe from '../view/registe';
 import RegisteService from '../view/registeService';
 import ResetPwd from '../view/resetPwd';
+
+// import HomePage from '../view/home/index.js'
 /* 设置页面的动画效果*/
 const TransitionConfiguration = () => ({
   screenInterpolator: (sceneProps) => {
@@ -155,6 +157,7 @@ export default class Nav extends Component{
       Registe:{screen: Registe}, //注册
       RegisteService:{screen:RegisteService},//注册服务
       ResetPwd:{screen:ResetPwd}//找回密码
+      // HomePage: { screen: HomePage }
 
     },{
       initialRouteName:'Login',

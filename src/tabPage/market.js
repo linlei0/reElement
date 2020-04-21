@@ -39,8 +39,23 @@ export default class Market extends Component {
 
     };
 }
+
+
+
 componentWillMount(){
-//  alert(new Date().format('yyyy-MM-dd'))
+
+}
+componentDidMount(){
+    this.listener = this.props.navigation.addListener('didFocus',(e)=>{
+        this.componentDidFocus(e)
+    })
+}
+componentDidFocus(e){
+   console.log(e);
+}
+//获取首页24h成交额数据
+getVolume(){
+    
 }
 //滑动到初始位置
 scrollOldPosition(index){
@@ -90,17 +105,21 @@ render() {
             </View>
             <View style={{flexDirection:"row"}}>
             <Bread
-            text1 = "1"
+            text1 = "BTC"
+            images = {require('../Images/BTC.png')}
             text2 = "2"
             style={{flex:1}}
             />
             <Bread
-            text1 = "1"
-            text2 = "2"
+            text1 = "ETH"
+            images = {require('../Images/ETH.png')}
+            text2 = "UT"
             style={{flex:1}}
             />
+
             <Bread
-            text1 = "1"
+            text1 = "UT"
+            images = {require('../Images/UT.png')}
             text2 = "2"
             style={{flex:1}}
             />
@@ -131,7 +150,7 @@ render() {
             <InfoList 
             data = {dataList}
             onPress = {(e)=>{
-                console.log(e)
+              alert(e.type)
             }}
             />
 

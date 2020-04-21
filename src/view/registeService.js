@@ -47,7 +47,7 @@ export default class RegisteService extends Component{
 
     }
     render(){
-        const source = (Platform.OS == 'ios') ? require('../web/index.html'):{ uri:'file:///android_asset/web/service.html' }
+        const source = { uri:'file:///android_asset/web/service.html' }
         return <View style={{flex:1}}>
         <Header 
         navigation = {this.props.navigation}

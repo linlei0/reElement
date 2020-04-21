@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {
   Text,
   View,
@@ -17,7 +18,7 @@ import Input from '../components/textInput';
 import {colorConfig} from '../config/colorConfig';
 const {width,height} = Dimensions.get('window');
 import{ px2dp} from '../lib/px2dp';
-export default class Registe extends Component{
+ class Registe extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -142,7 +143,7 @@ export default class Registe extends Component{
                 />:null}
 
             {this.state.type==2?<Input
-                placeholder="邮箱"
+                placeholder={this.props.publics.i18n.t('home.home')}
                 delete={true}
                 style={{marginTop:px2dp(20)}}
                 onChangeText={(mail)=>{
@@ -253,6 +254,48 @@ export default class Registe extends Component{
 
             </View>
             </KeyboardAvoidingView>
+            <View style={{flexDirection:"row",marginTop:px2dp(15)}}>
+                
+            <TouchableOpacity onPress={(()=>{
+              const { dispatch } = this.props
+              
+              dispatch({
+                type: 'publics/setLocale',
+                payload: {
+                  lang: 'en'
+                }
+              })
+
+            }).bind(this)}>
+                <Text style={{color:colorConfig.botton_color}}>English</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={
+              (()=>{
+                const { dispatch } = this.props
+               
+                
+                dispatch({
+                  type: 'publics/setLocale',
+                  payload: {
+                    lang: 'zh'
+                  }
+                })
+
+              }).bind(this)
+            }>
+                <Text style={{color:colorConfig.botton_color}}>中文</Text>
+            </TouchableOpacity>
+        </View>
         </TouchableOpacity>
     }
 }
+
+function select(state){
+  const {login,publics}=state;  
+  console.log(publics)
+  return {
+      login,
+      publics
+  }
+}
+export default connect(select)(Registe)

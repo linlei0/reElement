@@ -29,7 +29,7 @@ export default class Bread extends Component {
    
   }
   _onLayout(event){
-    let {x, y, width, height} = event.nativeEvent.layout;
+    let {width} = event.nativeEvent.layout;
     this.setState({
         width
     })
@@ -45,10 +45,10 @@ export default class Bread extends Component {
                 flexDirection:"column"
             }]}>
                 <View style={{flexDirection:"row",justifyContent:'center',alignItems:"center",paddingTop:px2dp(6)}}>
-                    <Image source={require('../Images/test.png')} />
+                    {this.props.images&&<Image source={this.props.images} />}
                     <Text>{this.props.text1}</Text>
                 </View>
-                <View style={{justifyContent:'center',alignItems:"center",marginTop:px2dp(15),paddingBottom:px2dp(6)}}>
+                <View style={{justifyContent:'center',alignItems:"center",marginTop:px2dp(10),paddingBottom:px2dp(6)}}>
                     <Text>{this.props.text2}</Text>
                 </View>
 
